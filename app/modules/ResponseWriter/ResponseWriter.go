@@ -1,4 +1,4 @@
-package types
+package ResponseWriter
 
 import "net/http"
 
