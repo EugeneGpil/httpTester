@@ -7,17 +7,27 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/EugeneGpil/httpTester/app/modules/Request/dto"
+	"github.com/EugeneGpil/httpTester/app/modules/Request/interfaces"
 )
 
-func GetRequest(dto dto.GetRequestDto) http.Request {
-	urlObj, _ := url.Parse(dto.Url)
+func GetRequest(dto interfaces.GetRequestDtoInterface) http.Request {
+	urlObj, _ := url.Parse(dto.GetUrl())
 
-	bodyBytes, _ := json.Marshal(dto.Body)
+	bodyBytes := getBody(dto.GetBody())
 
 	return http.Request{
-		Method: dto.Method,
+		Method: dto.GetMethod(),
 		URL:    urlObj,
 		Body:   io.NopCloser(bytes.NewReader(bodyBytes)),
 	}
+}
+
+func getBody(dtoBody interface{}) []byte {
+	if (dtoBody == nil) {
+		return []byte("{}")
+	}
+
+	bodyBytes, _ := json.Marshal(dtoBody)
+
+	return bodyBytes
 }

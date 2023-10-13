@@ -4,8 +4,9 @@ import (
 	"testing"
 
 	"github.com/EugeneGpil/httpTester/app/modules/Request"
-	"github.com/EugeneGpil/httpTester/app/modules/Request/dto"
 	"github.com/EugeneGpil/tester"
+
+	httpTester "github.com/EugeneGpil/httpTester"
 )
 
 func Test_should_return_request_with_correct_request_body(t *testing.T) {
@@ -17,7 +18,7 @@ func Test_should_return_request_with_correct_request_body(t *testing.T) {
 		Test: "test",
 	}
 
-	request := Request.GetRequest(dto.GetRequestDto{
+	request := Request.GetRequest(httpTester.GetRequestDto{
 		Method: "test",
 		Url:    "test",
 		Body:   getRequestBody,
