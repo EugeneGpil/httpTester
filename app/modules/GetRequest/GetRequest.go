@@ -1,4 +1,4 @@
-package Request
+package GetRequest
 
 import (
 	"bytes"
@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/EugeneGpil/httpTester/app/modules/Request/interfaces"
+	"github.com/EugeneGpil/httpTester/app/modules/GetRequest/interfaces"
 )
 
 func GetRequest(dto interfaces.GetRequestDtoInterface) http.Request {

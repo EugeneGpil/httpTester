@@ -3,8 +3,9 @@ package tester
 import (
 	"net/http"
 
-	"github.com/EugeneGpil/httpTester/app/modules/Request"
 	"github.com/EugeneGpil/httpTester/app/modules/ResponseWriter"
+
+	GetRequestModule "github.com/EugeneGpil/httpTester/app/modules/GetRequest"
 )
 
 func GetTestResponseWriter() ResponseWriter.ResponseWriter {
@@ -12,5 +13,5 @@ func GetTestResponseWriter() ResponseWriter.ResponseWriter {
 }
 
 func GetRequest(dto GetRequestDto) http.Request {
-	return Request.GetRequest(dto)
+	return GetRequestModule.GetRequest(dto)
 }
