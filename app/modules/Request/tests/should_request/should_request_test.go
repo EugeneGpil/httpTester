@@ -4,7 +4,6 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/EugeneGpil/httpTester/app/modules/Request"
 	"github.com/EugeneGpil/router"
 	"github.com/EugeneGpil/tester"
 
@@ -25,7 +24,7 @@ func Test_should_request(t *testing.T) {
 
 	router.DefineRoutes(mux)
 
-	writer := Request.Request(httpTester.GetRequestDto{
+	writer := httpTester.Request(httpTester.GetRequestDto{
 		Method: method,
 		Url:    url,
 	}, mux)
