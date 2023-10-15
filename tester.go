@@ -3,6 +3,7 @@ package tester
 import (
 	"net/http"
 
+	"github.com/EugeneGpil/httpTester/app/modules/Response"
 	"github.com/EugeneGpil/httpTester/app/modules/ResponseWriter"
 
 	GetRequestModule "github.com/EugeneGpil/httpTester/app/modules/GetRequest"
@@ -17,6 +18,6 @@ func GetRequest(dto GetRequestDto) http.Request {
 	return GetRequestModule.GetRequest(dto)
 }
 
-func Request(dto GetRequestDto, mux *http.ServeMux) ResponseWriter.ResponseWriter {
+func Request(dto GetRequestDto, mux *http.ServeMux) Response.Response {
 	return RequestModule.Request(dto, mux)
 }

@@ -24,11 +24,10 @@ func Test_should_request(t *testing.T) {
 
 	router.DefineRoutes(mux)
 
-	writer := httpTester.Request(httpTester.GetRequestDto{
+	response := httpTester.Request(httpTester.GetRequestDto{
 		Method: method,
 		Url:    url,
 	}, mux)
 
-	tester.AssertLen(writer.GetMessages(), 1)
-	tester.AssertSame(writer.GetMessages()[0], []byte(message))
+	tester.AssertSame([]byte(message), response.GetBody())
 }
