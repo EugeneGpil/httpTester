@@ -14,12 +14,15 @@ var mux = http.NewServeMux()
 var method = http.MethodGet
 var url = "/test"
 var message = "test message"
+var responseStatus = http.StatusAccepted
 
 func Test_should_request(t *testing.T) {
 	tester.SetTester(t)
 
 	router.AddRoute(method, url, func(writer http.ResponseWriter, request *http.Request) {
 		writer.Write([]byte(message))
+
+		writer.WriteHeader(responseStatus)
 	}, "test")
 
 	router.DefineRoutes(mux)

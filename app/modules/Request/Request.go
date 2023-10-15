@@ -18,7 +18,7 @@ func Request(dto interfaces.GetRequestDtoInterface, mux *http.ServeMux) Response
 
 	handler.ServeHTTP(writer, &request)
 
-	return Response.Response{
-		ResponseWriter: writer,
-	}
+	return Response.New(Response.NewResponseDto{
+		Writer: writer,
+	})
 }
