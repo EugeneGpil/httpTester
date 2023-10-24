@@ -1,8 +1,8 @@
 package GetBody
 
-import "github.com/EugeneGpil/httpTester/app/modules/ResponseWriter"
+import "github.com/EugeneGpil/responseWriter"
 
-func GetBody(writer ResponseWriter.ResponseWriter) []byte {
+func GetBody(writer responseWriter.ResponseWriter) []byte {
 	messages := writer.GetMessages()
 
 	res := make([]byte, 0)

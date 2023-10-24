@@ -2,15 +2,15 @@ package Response
 
 import (
 	"github.com/EugeneGpil/httpTester/app/modules/Response/methods/GetBody"
-	"github.com/EugeneGpil/httpTester/app/modules/ResponseWriter"
+	"github.com/EugeneGpil/responseWriter"
 )
 
 type Response struct {
-	writer ResponseWriter.ResponseWriter
+	writer responseWriter.ResponseWriter
 }
 
 type NewResponseDto struct {
-	Writer ResponseWriter.ResponseWriter
+	Writer responseWriter.ResponseWriter
 }
 
 func New(dto NewResponseDto) Response {

@@ -6,7 +6,7 @@ import (
 	"github.com/EugeneGpil/httpTester/app/modules/GetRequest"
 	"github.com/EugeneGpil/httpTester/app/modules/GetRequest/interfaces"
 	"github.com/EugeneGpil/httpTester/app/modules/Response"
-	"github.com/EugeneGpil/httpTester/app/modules/ResponseWriter"
+	"github.com/EugeneGpil/responseWriter"
 )
 
 func Request(dto interfaces.GetRequestDtoInterface, mux *http.ServeMux) Response.Response {
@@ -14,7 +14,7 @@ func Request(dto interfaces.GetRequestDtoInterface, mux *http.ServeMux) Response
 
 	handler, _ := mux.Handler(&request)
 
-	writer := ResponseWriter.NewResponseWriter()
+	writer := responseWriter.New()
 
 	handler.ServeHTTP(writer, &request)
 
