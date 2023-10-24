@@ -19,9 +19,9 @@ func Test_should_return_correct_response(t *testing.T) {
 	responseWriter.Write([]byte(message1))
 	responseWriter.Write([]byte(message2))
 
-	response := Response.Response{
-		ResponseWriter: responseWriter,
-	}
+	response := Response.New(Response.NewResponseDto{
+		Writer: responseWriter,
+	})
 
 	expectedBody := []byte(message1 + "\n" + message2)
 
