@@ -1,6 +1,8 @@
 package Response
 
 import (
+	"encoding/json"
+
 	"github.com/EugeneGpil/httpTester/app/modules/Response/methods/GetBody"
 	"github.com/EugeneGpil/responseWriter"
 )
@@ -25,4 +27,10 @@ func (response Response) GetBody() []byte {
 
 func (response Response) GetStatus() int {
 	return response.writer.GetStatus()
+}
+
+func (response Response) DecodeBody(body interface{}) error {
+	bodyRaw := response.GetBody()
+
+	return json.Unmarshal(bodyRaw, body)
 }
