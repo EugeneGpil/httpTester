@@ -12,7 +12,7 @@ import (
 func Test_should_return_request_with_correct_request_body(t *testing.T) {
 	tester.SetTester(t)
 
-	getRequestBody := struct {
+	requestBody := struct {
 		Test string
 	}{
 		Test: "test",
@@ -21,7 +21,7 @@ func Test_should_return_request_with_correct_request_body(t *testing.T) {
 	request := GetRequest.GetRequest(httpTester.GetRequestDto{
 		Method: "test",
 		Url:    "test",
-		Body:   getRequestBody,
+		Body:   requestBody,
 	})
 
 	resultRequestBody := make([]byte, 15)

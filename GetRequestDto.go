@@ -4,6 +4,7 @@ type GetRequestDto struct {
 	Method string
 	Url    string
 	Body   interface{}
+	Query  map[string]string
 }
 
 func (dto GetRequestDto) GetMethod() string {
@@ -16,4 +17,8 @@ func (dto GetRequestDto) GetUrl() string {
 
 func (dto GetRequestDto) GetBody() interface{} {
 	return dto.Body
+}
+
+func (dto GetRequestDto) GetQuery() map[string]string {
+	return dto.Query
 }

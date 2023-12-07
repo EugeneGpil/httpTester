@@ -6,12 +6,15 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 
 	"github.com/EugeneGpil/httpTester/app/modules/GetRequest/interfaces"
 )
 
 func GetRequest(dto interfaces.GetRequestDtoInterface) http.Request {
-	urlObj, _ := url.Parse(dto.GetUrl())
+	query := getQuery(dto.GetQuery())
+
+	urlObj, _ := url.Parse(dto.GetUrl() + "?" + query)
 
 	bodyBytes := getBody(dto.GetBody())
 
@@ -30,4 +33,13 @@ func getBody(dtoBody interface{}) []byte {
 	bodyBytes, _ := json.Marshal(dtoBody)
 
 	return bodyBytes
+}
+
+func getQuery(params map[string]string) string {
+	keyValue := make([]string, 0)
+	for key, value := range params {
+		keyValue = append(keyValue, key + "=" + value)
+	}
+
+	return strings.Join(keyValue, "&")
 }
